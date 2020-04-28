@@ -5,6 +5,10 @@
     <title>My fridge</title>
 </head>
 <body>
-<p>Item 1: {{ .Name }}, {{ .Quantity }}, {{ .Expiry }}</p>
+<p>
+    {{range .}}
+        Item: {{ .Name }}, {{ .Quantity }}, {{ .Expiry }}<br>
+    {{end}}
+</p>
 </body>
 </html>
