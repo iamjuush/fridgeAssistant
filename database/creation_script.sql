@@ -6,3 +6,9 @@ CREATE TABLE IF NOT EXISTS groceries
     Category varchar(50),
     Expiry   date
 );
+
+CREATE TABLE IF NOT EXISTS fridge
+(
+    Id int NOT NULL PRIMARY KEY,
+    Name varchar(50)
+)
