@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Fridge</title>
+    <title>Add {{ .ObjectName }}</title>
 </head>
 <body>
-<h1> Add a fridge here. </h1>
-<form action="/add/fridge" method="post">
-    Fridge Name: <input type="text" name="name">
+<h1> Add a {{ .ObjectName }} here. </h1>
+<form action={{ .Route }} method="post">
+    {{if .Fridge}}
+    Fridge Name: <input type="text" name="Name">
     <input type="submit" value="add">
+    {{ end }}
+    {{if .Grocery}}
+        Grocery Name: <input type="text" name="Name"><br>
+        Quantity: <input type="text" name="Quantity"><br>
+        Unit: <input type="text" name="Unit"><br>
+        Category: <input type="text" name="Category"><br>
+        Expiry: <input type=date name="Expiry"><br>
+        FridgeID: <input type="text" name="FridgeID"><br>
+        <input type="submit" value="add">
+    {{ end }}
 </form>
 </body>
 </html>
+

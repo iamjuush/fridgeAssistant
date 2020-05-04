@@ -1,14 +1,26 @@
-CREATE TABLE IF NOT EXISTS groceries
+create table if not exists dbo.fridges
 (
-    Name     varchar(100) NOT NULL PRIMARY KEY ON CONFLICT REPLACE,
-    Quantity float,
-    Unit     varchar(20),
-    Category varchar(50),
-    Expiry   date
+    id   int auto_increment
+        primary key,
+    name varchar(100) null,
+    constraint uix_fridges_name
+        unique (name)
 );
 
-CREATE TABLE IF NOT EXISTS fridge
+create table if not exists dbo.groceries
 (
-    Id int NOT NULL PRIMARY KEY,
-    Name varchar(50)
-)
+    id        int auto_increment
+        primary key,
+    name      varchar(100) null,
+    quantity  double       null,
+    unit      varchar(50)  null,
+    category  varchar(50)  null,
+    expiry    date         null,
+    fridge_id int          null,
+    constraint uix_groceries_name
+        unique (name),
+    constraint groceries_fridge_id_fridges_ID_foreign
+        foreign key (fridge_id) references dbo.fridges (id)
+            on delete cascade
+);
+
